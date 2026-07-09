@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Solution Marketing — Digital Marketing, AI Search & Reporting</title>
+<meta name="description" content="Smart Solution Marketing helps growing businesses improve SEO, paid media, social media and AI search visibility with clear reporting through SSM Intelligence.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --ink: #150F2E;
+  --ink-soft: #1E1745;
+  --cream: #FAF7FF;
+  --cream-dim: #F1E9FF;
+  --gold: #FF2E9C;
+  --gold-dim: #D91672;
+  --gold-pale: #FFD6EA;
+  --lime: #C6FF3D;
+  --orange: #FF7A1A;
+  --muted: #6E6693;
+  --white: #FFFFFF;
+  --line: rgba(21,15,46,0.1);
+  --shadow: 0 20px 60px rgba(21,15,46,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--cream); line-height: 1.6; overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: 'Fraunces', serif; line-height: 1.1; }
+a { color: inherit; text-decoration: none; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; gap: 0;
+  padding: 0 5vw; height: 68px;
+  background: rgba(250,247,255,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-logo { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 600; color: var(--ink); margin-right: auto; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 30px; margin-right: 28px; }
+.nav-links a { font-size: 13px; color: var(--ink-soft); transition: color .2s; }
+.nav-links a:hover { color: var(--gold-dim); }
+.nav-cta { background: var(--ink); color: var(--cream); font-size: 13px; font-weight: 700; padding: 10px 22px; border-radius: 4px; transition: all .2s; }
+.nav-cta:hover { background: var(--gold-dim); }
+.menu-toggle { display: none; width: 42px; height: 42px; border: 1px solid var(--line); background: var(--white); border-radius: 6px; color: var(--ink); font-size: 22px; cursor: pointer; }
+.mobile-panel { display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 999; background: rgba(250,247,255,0.98); border-bottom: 1px solid var(--line); box-shadow: var(--shadow); padding: 18px 5vw 24px; }
+.mobile-panel a { display: block; padding: 13px 0; font-size: 15px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.mobile-panel a:last-child { border-bottom: none; margin-top: 10px; background: var(--ink); color: var(--cream); text-align: center; border-radius: 4px; font-weight: 700; }
+.mobile-panel.open { display: block; }
+
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 130px 5vw 60px; position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; right: -160px; top: 120px; width: 560px; height: 560px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,46,156,0.14) 0%, rgba(255,122,26,0.08) 35%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold-dim); margin-bottom: 28px; position: relative; z-index: 1;
+}
+.hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold-dim); }
+.hero h1 {
+  font-size: clamp(38px, 6.2vw, 82px); font-weight: 600; color: var(--ink);
+  max-width: 1000px; letter-spacing: -0.01em; margin-bottom: 28px; position: relative; z-index: 1;
+}
+.hero h1 em {
+  font-style: italic; font-weight: 500;
+  background: linear-gradient(100deg, var(--gold) 10%, var(--orange) 55%, var(--lime) 95%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-sub {
+  font-size: clamp(16px, 1.8vw, 19px); color: var(--muted); max-width: 650px;
+  margin-bottom: 38px; font-weight: 300; position: relative; z-index: 1;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; position: relative; z-index: 1; }
+.btn-primary {
+  background: linear-gradient(120deg, var(--gold), var(--orange));
+  color: var(--white); font-size: 15px; font-weight: 800; padding: 15px 32px; border-radius: 4px; transition: all .25s;
+  box-shadow: 0 8px 24px rgba(255,46,156,0.28);
+}
+.btn-primary:hover { filter: brightness(1.08); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255,46,156,0.4); }
+.btn-outline { border: 1.5px solid var(--ink); color: var(--ink); font-size: 15px; font-weight: 600; padding: 15px 32px; border-radius: 4px; transition: all .2s; }
+.btn-outline:hover { background: var(--ink); color: var(--lime); border-color: var(--ink); }
+.hero-proof { display: flex; gap: 28px; flex-wrap: wrap; position: relative; z-index: 1; }
+.proof-item { border-left: 2px solid var(--gold); padding-left: 14px; max-width: 210px; }
+.proof-item strong { display: block; font-size: 14px; color: var(--ink); margin-bottom: 2px; }
+.proof-item span { display: block; font-size: 12px; color: var(--muted); }
+
+.rail-wrap { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 20px 0; overflow: hidden; background: var(--ink); }
+.rail-track { display: flex; gap: 48px; white-space: nowrap; animation: scroll-rail 34s linear infinite; width: max-content; }
+.rail-track span { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 500; color: var(--cream-dim); display: flex; align-items: center; gap: 48px; }
+.rail-track span::after { content: '—'; color: var(--gold); }
+@keyframes scroll-rail { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .rail-track { animation: none; } }
+
+section { padding: 110px 5vw; }
+.section-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: 16px; }
+.section-title { font-size: clamp(30px, 4vw, 48px); font-weight: 600; color: var(--ink); max-width: 700px; letter-spacing: -0.01em; margin-bottom: 20px; }
+.section-sub { font-size: 17px; color: var(--muted); max-width: 600px; margin-bottom: 56px; font-weight: 300; }
+
+.fit { background: var(--white); }
+.fit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.fit-card { background: var(--white); padding: 28px; min-height: 150px; transition: all .2s; }
+.fit-card:hover { background: var(--cream-dim); }
+.fit-card h3 { font-size: 20px; margin-bottom: 10px; }
+.fit-card p { font-size: 14px; color: var(--muted); }
+
+.disciplines { background: var(--cream); }
+.discipline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.discipline-card { background: var(--white); padding: 36px 32px; }
+.discipline-num { font-family: 'Fraunces', serif; font-size: 13px; color: var(--gold-dim); font-weight: 700; margin-bottom: 18px; letter-spacing: .02em; }
+.discipline-card:nth-child(2) .discipline-num { color: #C9700A; }
+.discipline-card:nth-child(3) .discipline-num { color: #5A8A00; }
+.discipline-card:nth-child(4) .discipline-num { color: #7D2BD9; }
+.discipline-card:hover { background: var(--cream-dim); transition: background .2s; }
+.discipline-card h3 { font-size: 22px; font-weight: 600; color: var(--ink); margin-bottom: 14px; }
+.discipline-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.discipline-list li { font-size: 14px; color: var(--muted); display: flex; align-items: baseline; gap: 8px; }
+.discipline-list li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 4px; }
+
+.ai-section { background: var(--ink); color: var(--cream); position: relative; overflow: hidden; }
+.ai-section::before {
+  content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,46,156,0.12) 0%, transparent 70%); pointer-events: none;
+}
+.ai-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; max-width: 1120px; margin: 0 auto; position: relative; }
+.ai-text .section-title { color: var(--cream); }
+.ai-text .section-sub { color: rgba(250,247,255,0.58); }
+.ai-checklist { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.ai-checklist li { font-size: 15px; color: rgba(250,247,255,0.85); display: flex; align-items: flex-start; gap: 12px; }
+.ai-checklist li::before { content: '✓'; flex-shrink: 0; width: 24px; height: 24px; background: rgba(255,46,156,0.18); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; margin-top: 1px; }
+.ai-card { background: rgba(250,247,255,0.05); border: 1px solid rgba(250,247,255,0.12); border-radius: 12px; padding: 32px; }
+.ai-card-label { font-size: 12px; color: rgba(250,247,255,0.42); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 20px; }
+.query-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(250,247,255,0.08); font-size: 14px; gap: 18px; }
+.query-row:last-child { border-bottom: none; }
+.query-text { color: rgba(250,247,255,0.75); }
+.query-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; white-space: nowrap; }
+.qb-yes { background: rgba(255,46,156,0.2); color: var(--gold); }
+.qb-partial { background: rgba(250,247,255,0.1); color: rgba(250,247,255,0.65); }
+
+.thirty-days { background: linear-gradient(120deg, var(--gold-pale) 0%, #FFE9D4 100%); }
+.days-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; max-width: 1050px; }
+.day-card { background: rgba(255,255,255,0.75); border: 1px solid rgba(21,15,46,0.08); border-radius: 12px; padding: 26px; box-shadow: 0 10px 30px rgba(21,15,46,0.04); }
+.day-card h3 { font-size: 20px; margin-bottom: 8px; }
+.day-card p { font-size: 14px; color: var(--muted); }
+
+.product-spotlight { background: var(--white); }
+.spotlight-card {
+  background: linear-gradient(135deg, var(--ink) 0%, #2A1050 60%, #3A0F45 100%);
+  border-radius: 16px; padding: 56px; display: grid;
+  grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; max-width: 1100px; margin: 0 auto;
+  position: relative; overflow: hidden;
+}
+.spotlight-card::before {
+  content: ''; position: absolute; top: -30%; right: -10%; width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,46,156,0.25) 0%, transparent 70%); pointer-events: none;
+}
+.spotlight-eyebrow { font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 18px; position: relative; }
+.spotlight-card h3 { font-size: clamp(26px, 3.4vw, 38px); color: var(--cream); margin-bottom: 18px; font-weight: 600; position: relative; }
+.spotlight-card p { font-size: 15px; color: rgba(250,247,255,0.66); margin-bottom: 28px; font-weight: 300; max-width: 520px; position: relative; }
+.spotlight-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--ink); font-size: 14px; font-weight: 800; padding: 13px 26px; border-radius: 4px; transition: all .2s; position: relative; }
+.spotlight-btn:hover { background: #FF7A1A; transform: translateX(3px); }
+.spotlight-visual { background: rgba(250,247,255,0.05); border: 1px solid rgba(250,247,255,0.1); border-radius: 12px; padding: 24px; position: relative; }
+.sv-stat { display: flex; justify-content: space-between; align-items: center; padding: 11px 0; border-bottom: 1px solid rgba(250,247,255,0.08); gap: 18px; }
+.sv-stat:last-child { border-bottom: none; }
+.sv-label { font-size: 13px; color: rgba(250,247,255,0.52); }
+.sv-val { font-size: 14px; font-weight: 700; color: var(--gold); text-align: right; }
+
+.trust { background: var(--cream-dim); }
+.trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.trust-card { background: var(--white); padding: 30px; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 12px 36px rgba(21,15,46,0.04); }
+.trust-card h3 { font-size: 21px; margin-bottom: 10px; }
+.trust-card p { font-size: 14px; color: var(--muted); }
+
+.process { background: var(--white); }
+.process-list { display: flex; flex-direction: column; }
+.process-row { display: grid; grid-template-columns: 90px 1fr; gap: 32px; padding: 32px 0; border-bottom: 1px solid var(--line); }
+.process-row:first-child { border-top: 1px solid var(--line); }
+.process-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 600; color: var(--gold-pale); }
+.process-row h4 { font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.process-row p { font-size: 14px; color: var(--muted); max-width: 600px; }
+
+.contact { background: var(--cream); }
+.contact-wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; max-width: 1120px; margin: 0 auto; align-items: start; }
+.contact-panel { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 34px; box-shadow: var(--shadow); }
+.contact-info { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+.contact-info li { font-size: 14px; color: var(--muted); }
+.contact-info strong { color: var(--ink); }
+.form-grid { display: grid; gap: 14px; }
+.form-grid label { font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+.form-grid input, .form-grid textarea { width: 100%; margin-top: 7px; border: 1px solid var(--line); background: var(--cream); border-radius: 6px; padding: 13px 14px; font: inherit; color: var(--ink); }
+.form-grid textarea { min-height: 130px; resize: vertical; }
+.form-submit { border: none; cursor: pointer; background: linear-gradient(120deg, var(--gold), var(--orange)); color: var(--white); font-size: 15px; font-weight: 800; padding: 15px 30px; border-radius: 4px; box-shadow: 0 8px 24px rgba(255,46,156,0.22); }
+.form-note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+
+.cta-section {
+  background: radial-gradient(ellipse 80% 60% at 50% 20%, #2A1050 0%, var(--ink) 60%);
+  text-align: center; padding: 110px 5vw;
+}
+.cta-section h2 { font-size: clamp(30px, 5vw, 56px); color: var(--cream); margin-bottom: 20px; font-weight: 600; }
+.cta-section p { font-size: 17px; color: rgba(250,247,255,0.58); margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; font-weight: 300; }
+.cta-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.cta-primary { background: linear-gradient(120deg, var(--gold), var(--orange)); color: var(--white); font-size: 15px; font-weight: 800; padding: 16px 34px; border-radius: 4px; transition: all .25s; box-shadow: 0 10px 30px rgba(255,46,156,0.3); }
+.cta-primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+.cta-ghost { border: 1.5px solid rgba(250,247,255,0.3); color: var(--cream); font-size: 15px; font-weight: 600; padding: 16px 34px; border-radius: 4px; transition: all .2s; }
+.cta-ghost:hover { border-color: var(--lime); color: var(--lime); }
+
+footer { background: #0F0A24; padding: 56px 5vw 32px; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+.footer-logo { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 600; color: var(--cream); margin-bottom: 10px; }
+.footer-logo span { color: var(--gold); }
+.footer-desc { font-size: 13px; color: rgba(250,247,255,0.38); max-width: 340px; line-height: 1.6; }
+.footer-col h5 { font-size: 12px; color: rgba(250,247,255,0.42); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 16px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(250,247,255,0.58); margin-bottom: 10px; transition: color .2s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom { grid-column: 1 / -1; border-top: 1px solid rgba(250,247,255,0.08); padding-top: 24px; margin-top: 20px; font-size: 12px; color: rgba(250,247,255,0.28); }
+
+@media (max-width: 860px) {
+  .nav-links, .nav-cta { display: none; }
+  .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .ai-inner, .spotlight-card, .contact-wrap { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr; }
+  section { padding: 76px 5vw; }
+  .hero { min-height: auto; padding-top: 115px; }
+  .spotlight-card { padding: 36px 24px; }
+  .process-row { grid-template-columns: 1fr; gap: 10px; }
+  .process-num { font-size: 26px; }
+}
+
+.fade-up { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Smart Solution <span>Marketing</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#ai-geo">AI & GEO</a>
+    <a href="#product">SSM Intelligence</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Free audit</a>
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+</nav>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#services">Services</a>
+  <a href="#ai-geo">AI & GEO</a>
+  <a href="#product">SSM Intelligence</a>
+  <a href="#process">Process</a>
+  <a href="#contact">Request free audit</a>
+</div>
+
+<section class="hero">
+  <div class="hero-eyebrow">Digital marketing agency · UK & global</div>
+  <h1>Digital marketing, AI search visibility and reporting <em>built for growth.</em></h1>
+  <p class="hero-sub">Smart Solution Marketing helps growing businesses improve SEO, paid media, social media and AI search visibility — with clear reporting through our in-house SSM Intelligence platform.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Book a free 20-minute audit</a>
+    <a href="#services" class="btn-outline">See services</a>
+  </div>
+  <div class="hero-proof">
+    <div class="proof-item"><strong>Search visibility</strong><span>SEO, GEO and AI search optimisation.</span></div>
+    <div class="proof-item"><strong>Paid growth</strong><span>Google, Meta, TikTok and retargeting.</span></div>
+    <div class="proof-item"><strong>Clear reporting</strong><span>Dashboards, actions and simple numbers.</span></div>
+  </div>
+</section>
+
+<div class="rail-wrap">
+  <div class="rail-track">
+    <span>SEO<span>GEO & AI Search</span>Paid Media<span>Instagram</span>TikTok<span>Meta Ads</span>Google Ads<span>LinkedIn</span>Web Design<span>Reporting</span>Automation<span>Content</span></span>
+    <span>SEO<span>GEO & AI Search</span>Paid Media<span>Instagram</span>TikTok<span>Meta Ads</span>Google Ads<span>LinkedIn</span>Web Design<span>Reporting</span>Automation<span>Content</span></span>
+  </div>
+</div>
+
+<section class="fit" id="fit">
+  <div class="section-eyebrow">Built for</div>
+  <h2 class="section-title fade-up">Practical marketing support for businesses that need clearer growth</h2>
+  <p class="section-sub fade-up">We are built for companies that want more visibility, better leads and reporting they can actually understand.</p>
+  <div class="fit-grid">
+    <div class="fit-card fade-up"><h3>Local service businesses</h3><p>Improve local visibility, enquiries and search performance.</p></div>
+    <div class="fit-card fade-up"><h3>E-commerce stores</h3><p>Optimise product traffic, paid media and conversion journeys.</p></div>
+    <div class="fit-card fade-up"><h3>Startups</h3><p>Build a stronger digital presence with focused campaigns.</p></div>
+    <div class="fit-card fade-up"><h3>Small agencies</h3><p>Use better reporting and AI visibility insight for clients.</p></div>
+  </div>
+</section>
+
+<section class="disciplines" id="services">
+  <div class="section-eyebrow">What we do</div>
+  <h2 class="section-title fade-up">Four core services, one connected strategy</h2>
+  <p class="section-sub fade-up">Instead of selling random marketing tasks, we connect search, paid growth, content and reporting into one clear plan.</p>
+  <div class="discipline-grid">
+    <div class="discipline-card fade-up">
+      <div class="discipline-num">01 — Visibility</div>
+      <h3>Search Visibility</h3>
+      <ul class="discipline-list">
+        <li>Technical and on-page SEO</li>
+        <li>Local SEO and content planning</li>
+        <li>GEO — generative engine optimisation</li>
+        <li>AI search visibility for ChatGPT, Gemini and Perplexity</li>
+      </ul>
+    </div>
+    <div class="discipline-card fade-up">
+      <div class="discipline-num">02 — Acquisition</div>
+      <h3>Paid Growth</h3>
+      <ul class="discipline-list">
+        <li>Google Ads and Shopping campaigns</li>
+        <li>Meta, Instagram and TikTok Ads</li>
+        <li>Retargeting and landing page testing</li>
+        <li>Budget optimisation around leads and revenue</li>
+      </ul>
+    </div>
+    <div class="discipline-card fade-up">
+      <div class="discipline-num">03 — Demand</div>
+      <h3>Social & Content</h3>
+      <ul class="discipline-list">
+        <li>Organic social media planning</li>
+        <li>Short-form content and campaign ideas</li>
+        <li>LinkedIn, Instagram, Facebook and TikTok support</li>
+        <li>Brand messaging and content direction</li>
+      </ul>
+    </div>
+    <div class="discipline-card fade-up">
+      <div class="discipline-num">04 — Clarity</div>
+      <h3>Web & Reporting</h3>
+      <ul class="discipline-list">
+        <li>Website and landing page improvements</li>
+        <li>Simple conversion-focused design</li>
+        <li>Client dashboards and reporting workflows</li>
+        <li>Powered by the SSM Intelligence roadmap</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="ai-section" id="ai-geo">
+  <div class="ai-inner">
+    <div class="ai-text fade-up">
+      <div class="section-eyebrow">The new search landscape</div>
+      <h2 class="section-title">Search is no longer only Google</h2>
+      <p class="section-sub">Customers now ask ChatGPT, Gemini and Perplexity for recommendations. We help brands improve traditional SEO while preparing their content for AI search visibility.</p>
+      <ul class="ai-checklist">
+        <li>Review how your brand appears across AI search answers</li>
+        <li>Identify content gaps that stop your brand being recommended</li>
+        <li>Compare visibility against direct competitors</li>
+        <li>Connect GEO work with traditional SEO, content and paid campaigns</li>
+      </ul>
+    </div>
+    <div class="ai-card fade-up">
+      <div class="ai-card-label">Example visibility review</div>
+      <div class="query-row"><span class="query-text">best digital marketing agency for local business</span><span class="query-badge qb-partial">Review</span></div>
+      <div class="query-row"><span class="query-text">agency for SEO and AI search visibility</span><span class="query-badge qb-yes">Opportunity</span></div>
+      <div class="query-row"><span class="query-text">e-commerce marketing agency UK</span><span class="query-badge qb-partial">Review</span></div>
+      <div class="query-row"><span class="query-text">AI marketing support for small business</span><span class="query-badge qb-yes">Opportunity</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="thirty-days">
+  <div class="section-eyebrow">First 30 days</div>
+  <h2 class="section-title fade-up">A clear start before any long-term commitment</h2>
+  <p class="section-sub fade-up">We begin with a practical audit and a focused action plan, so you know exactly what needs fixing and what can drive growth first.</p>
+  <div class="days-grid">
+    <div class="day-card fade-up"><h3>Marketing audit</h3><p>A clear review of your website, search visibility, paid media and content performance.</p></div>
+    <div class="day-card fade-up"><h3>SEO & AI search review</h3><p>We check how your business can improve visibility across Google and AI search engines.</p></div>
+    <div class="day-card fade-up"><h3>Competitor check</h3><p>We compare your positioning, content and digital activity against key competitors.</p></div>
+    <div class="day-card fade-up"><h3>Simple action plan</h3><p>You receive a practical growth plan with priorities, quick wins and reporting recommendations.</p></div>
+  </div>
+</section>
+
+<section class="product-spotlight" id="product">
+  <div class="section-eyebrow" style="display:block;text-align:center;margin-bottom:16px">Built in-house</div>
+  <h2 class="section-title fade-up" style="margin:0 auto 48px;text-align:center;max-width:700px">The intelligence platform behind our reporting vision</h2>
+  <div class="spotlight-card fade-up">
+    <div>
+      <div class="spotlight-eyebrow">SSM Intelligence</div>
+      <h3>Marketing performance, AI visibility and client reporting in one place</h3>
+      <p>SSM Intelligence is our in-house platform being developed to unify marketing data, AI search visibility, client reporting and practical growth recommendations for businesses and agencies.</p>
+      <a href="https://ssmintelligence.com" class="spotlight-btn">Explore SSM Intelligence →</a>
+    </div>
+    <div class="spotlight-visual">
+      <div class="sv-stat"><span class="sv-label">Current focus</span><span class="sv-val">Reporting clarity</span></div>
+      <div class="sv-stat"><span class="sv-label">Roadmap</span><span class="sv-val">AI visibility</span></div>
+      <div class="sv-stat"><span class="sv-label">Use case</span><span class="sv-val">Agencies & brands</span></div>
+      <div class="sv-stat"><span class="sv-label">Access</span><span class="sv-val">Early access coming soon</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="section-eyebrow">Why us</div>
+  <h2 class="section-title fade-up">A more transparent way to run digital marketing</h2>
+  <p class="section-sub fade-up">We focus on clear communication, practical growth work and reporting that shows what is improving, what needs attention and what to do next.</p>
+  <div class="trust-grid">
+    <div class="trust-card fade-up"><h3>UK-based support</h3><p>Work with a digital marketing partner that understands UK businesses and global growth opportunities.</p></div>
+    <div class="trust-card fade-up"><h3>Connected strategy</h3><p>SEO, paid media, social and AI search are planned together instead of being treated as separate tasks.</p></div>
+    <div class="trust-card fade-up"><h3>Simple reporting</h3><p>No confusing monthly PDFs. The goal is clear numbers, plain actions and better decisions.</p></div>
+    <div class="trust-card fade-up"><h3>Built for growth</h3><p>Our approach is designed for small businesses, e-commerce brands, startups and agencies that need practical support.</p></div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="section-eyebrow">How we work</div>
+  <h2 class="section-title fade-up">From audit to measurable improvement</h2>
+  <div class="process-list">
+    <div class="process-row fade-up">
+      <div class="process-num">01</div>
+      <div><h4>Audit & priorities</h4><p>We review your website, marketing channels, search presence and AI visibility opportunities, then agree the highest-impact priorities.</p></div>
+    </div>
+    <div class="process-row fade-up">
+      <div class="process-num">02</div>
+      <div><h4>Strategy & setup</h4><p>We create a practical plan covering search, paid media, content, landing pages and reporting, based on your business goals.</p></div>
+    </div>
+    <div class="process-row fade-up">
+      <div class="process-num">03</div>
+      <div><h4>Launch & optimise</h4><p>Campaigns and improvements go live, then we optimise around visibility, leads, conversions and cost efficiency.</p></div>
+    </div>
+    <div class="process-row fade-up">
+      <div class="process-num">04</div>
+      <div><h4>Report & improve</h4><p>You get clear reporting and next-step recommendations, so the work stays focused on what is actually moving the business forward.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-wrap">
+    <div>
+      <div class="section-eyebrow">Contact</div>
+      <h2 class="section-title fade-up">Request a free 20-minute marketing audit</h2>
+      <p class="section-sub fade-up">Share your website and goals. We will review the main growth opportunities and suggest the best next steps.</p>
+      <ul class="contact-info fade-up">
+        <li><strong>Email:</strong> <a href="mailto:hello@smartsolutionmarketing.co.uk">hello@smartsolutionmarketing.co.uk</a></li>
+        <li><strong>Location:</strong> United Kingdom</li>
+        <li><strong>Company:</strong> Smart Solution Marketing Limited</li>
+      </ul>
+    </div>
+    <div class="contact-panel fade-up">
+      <form action="https://formsubmit.co/hello@smartsolutionmarketing.co.uk" method="POST">
+        <input type="hidden" name="_subject" value="New Free Marketing Audit Request">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="form-grid">
+          <label>Name<input type="text" name="name" placeholder="Your name" required></label>
+          <label>Email<input type="email" name="email" placeholder="you@example.com" required></label>
+          <label>Website<input type="url" name="website" placeholder="https://yourwebsite.com"></label>
+          <label>What do you need help with?<textarea name="message" placeholder="Tell us about your business, goals and current marketing challenge."></textarea></label>
+          <button class="form-submit" type="submit">Request free audit</button>
+        </div>
+        <p class="form-note">Your request will be sent directly to hello@smartsolutionmarketing.co.uk. We aim to respond within one business day.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2 class="fade-up">Let’s make your marketing easier to measure</h2>
+  <p class="fade-up">Start with a free 20-minute audit and get a clearer view of your SEO, paid media, AI search and reporting opportunities.</p>
+  <div class="cta-btn-row fade-up">
+    <a href="#contact" class="cta-primary">Request free audit</a>
+    <a href="https://ssmintelligence.com" class="cta-ghost">Explore SSM Intelligence</a>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Smart Solution <span>Marketing</span></div>
+    <div class="footer-desc">A digital marketing agency covering SEO, GEO, paid media, social media, web improvements and clearer reporting through the SSM Intelligence roadmap.</div>
+  </div>
+  <div class="footer-col">
+    <h5>Services</h5>
+    <a href="#services">Search Visibility</a>
+    <a href="#services">Paid Growth</a>
+    <a href="#services">Social & Content</a>
+    <a href="#services">Web & Reporting</a>
+  </div>
+  <div class="footer-col">
+    <h5>Company</h5>
+    <a href="#product">SSM Intelligence</a>
+    <a href="#process">Our Process</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-bottom">© 2025 Smart Solution Marketing Limited. All rights reserved.</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+const toggle = document.querySelector('.menu-toggle');
+const panel = document.getElementById('mobilePanel');
+if (toggle && panel) {
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.textContent = isOpen ? '×' : '☰';
+  });
+  panel.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      panel.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '☰';
+    });
+  });
+}
+</script>
+</body>
+</html>
